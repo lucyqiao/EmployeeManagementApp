@@ -10,7 +10,6 @@
                     <input class="form-control" type="text" name="fullName" ng-model="employee.name"  placeholder="Full Name" required>
                     <i ng-show="newForm.fullName.$error.required">*required</i>
                 </fieldset>
-                </fieldset>
                 <fieldset class="form-group">
                     <label>Title:</label>
                     <input class="form-control" type="text" name="employeeTitle" ng-model="employee.title" placeholder="Title" required>
@@ -19,9 +18,8 @@
                 <fieldset class="form-group">
                     <label>Sex:</label>
                     <select class="form-control" ng-model="employee.sex">
-                        <option>male</option>
-                        <option>female</option>
-                        <option>other</option>
+                        <option>Male</option>
+                        <option>Female</option>
                     </select>
                 </fieldset>
                 <fieldset class="form-group">

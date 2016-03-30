@@ -8,7 +8,7 @@ angular.module('myApp', ['ngRoute'])
                 controller : 'EmployeeListCtrl'
             })
             .when('/new_employee', {
-                templateUrl :'templates/newEmpolyee.html',
+                templateUrl :'templates/newEmployee.html',
                 controller : 'NewEmployeeCtrl'
             })
             .when('/:id', {
@@ -44,12 +44,15 @@ angular.module('myApp', ['ngRoute'])
         },
         updateEmployee : function(employee) {
             return $http.put('/employees/' + employee._id.toString(), employee);
+        },
+        deleteEmployee : function(id) {
+            return $http.delete('/employees/' + id.toString());
         }
     };
 }])
 
 //edit employee page
-.controller('EditEmployeeCtrl', function($scope, $routeParams, Upload, $timeout, $location, employeeFactory) {
+.controller('EditEmployeeCtrl', function($scope, $routeParams, $timeout, $location, employeeFactory) {
     employeeFactory.getOneEmployee($routeParams.id)
         .then(function(res) {
             $scope.employee = res.data;
@@ -90,6 +93,18 @@ angular.module('myApp', ['ngRoute'])
         });
     $scope.editProfile = function() {
         $location.path("/" + $scope.employee._id + "/edit");
+    };
+    $scope.deleteProfile = function() {
+        if($scope.employee._id) {
+            employeeFactory.deleteEmployee($scope.employee._id)
+                .then(function(res) {
+                    $location.path("/");
+                    console.log(res);
+                }, function (err) {
+                    console.log(err);
+                    $location.path("/");
+                });
+        }
     };
 
 })
