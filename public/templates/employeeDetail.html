@@ -1,0 +1,81 @@
+<nav class="navbar navbar-default"> 
+    <div class="container-fluid">      
+         <div class="navbar-header">
+             <a href="#/" class="navbar-brand">Employee Directory</a>
+          </div>
+          <ul class="nav navbar-nav">
+              <li><a href="#/">View Employee List</a></li>
+              <li><a href="#/new_employee">Create New Employee</a></li> 
+          </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="panel panel-info">
+        <div class="panel-heading">{{employee.name}}</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3 col-lg-3 employee_img" align="center">
+                    <img alt="Employee Pic" src="images/user.png" class="img-circle img-responsive">
+                </div>
+                <div class=" col-md-9 col-lg-9 ">
+                    <table class="table table-user-information">
+                        <tbody>
+                            <tr>
+                                <td>Name:</td>
+                                <td>{{employee.name}}</td>
+                                <td></td>
+                            <tr>
+                                <td>Title:</td>
+                                <td>{{employee.title}}</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Gender:</td>
+                                <td>{{employee.sex}}</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Start Date:</td>
+                                <td>{{employee.startDate}}</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Office Phone:</td>
+                                <td>{{employee.officePhone}}</td>
+                                <td><a href="tel:{{employee.officePhone}}"><span class="glyphicon glyphicon-briefcase action-btn"></span></a></td>
+                            </tr>
+                            <tr>
+                                <td>Cell Phone:</td>
+                                <td>{{employee.cellPhone}}</td>
+                                <td><a href="tel:{{employee.cellPhone}}"><span class="glyphicon glyphicon-phone action-btn"></span></a></td>
+                            </tr>
+                            <tr>
+                                <td>Email:</td>
+                                <td>{{employee.email}}</td>
+                                <td><a href="mailto:{{employee.email}}"><span class="glyphicon glyphicon-envelope action-btn"></span></a></td>
+                            </tr>
+                            <tr>
+                                <td>Manager:</td>
+                                <td>{{employee.managerObj.name}}</td>
+                                <td><a href="#/{{employee.managerObj._id}}"><span class="glyphicon glyphicon-menu-right action-btn"></span></a></td>
+                            </tr>
+                            <tr>
+                                <td>Direct Reports:</td>
+                                <td>{{employee.dirReports.length}}</td>
+                                <td><a href="#/{{employee._id}}/reports"><span class="glyphicon glyphicon-menu-right action-btn"></span></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-6">
+                        <button  class="btn btn-success btn-md" ng-click="editProfile()">Edit</button>
+                        <button  class="btn btn-danger btn-md" ng-click="deleteProfile()">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+body{
+	background-color: rgb(230,233,232);
+}
+.search-bar {
+    padding:5px 5px 6px 4px;
+}
+
+.search-bar > input {
+    width: 100%;
+}
+.scroller {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    position: absolute;
+    top: 140px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.count{
+	color: #5DC1FF;
+    position: absolute;
+    right: 55px;
+    top: 28px;
+    font-weight: bold;
+}
+.chevron{
+    position: absolute;
+    right: 12px;
+    top: 18px;
+    height: 40px;
+    width: 36px;
+}
+.list {
+    list-style-type: none; 
+}
+.list li{
+	background-color: rgb(230,233,232);
+}
+.list > li > p:nth-of-type(1) {
+    margin: 8px 0px 0px 0px;
+    font-weight: bold;
+}
+.list > li > p:nth-of-type(2) {
+    margin: 0px;
+    color: #777;
+}
+.list > li img {
+	float: left;
+    width: 57px;
+    height: 57px;
+    padding-bottom: 8px;
+    margin-right: 8px;
+}
+
+.panel-info{
+	margin-top: 40px;
+}
+.panel-heading{
+	font-size: 20px;
+	font-weight: bold;
+}
+.employee_img{
+	margin-top: 50px;
+}
+.table-user-information > tbody > tr >td:nth-of-type(1){
+	font-weight: bold;
+}
+.table-user-information > tbody > tr >td:nth-of-type(2){
+	color: #777;
+}
+.action-btn{
+	float: right;
+
+}
