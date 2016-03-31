@@ -1,55 +1,96 @@
-<div class="container">
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">Edit Employee</h3>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="#/" class="navbar-brand">Employee Directory</a>
         </div>
-        <div class="panel-body">
-            <form name="newForm">
-                <fieldset calss="form-group">
-                    <label>Name:</label>
-                    <input class="form-control" type="text" name="fullName" ng-model="employee.name"  placeholder="Full Name" required>
-                    <i ng-show="newForm.fullName.$error.required">*required</i>
-                </fieldset>
-                <fieldset class="form-group">
-                    <label>Title:</label>
-                    <input class="form-control" type="text" name="employeeTitle" ng-model="employee.title" placeholder="Title" required>
-                    <i ng-show="newForm.employeeTitle.$error.required">*required</i>
-                </fieldset>
-                <fieldset class="form-group">
-                    <label>Sex:</label>
-                    <select class="form-control" ng-model="employee.sex">
-                        <option>Male</option>
-                        <option>Female</option>
-                    </select>
-                </fieldset>
-                <fieldset class="form-group">
-                    <label>Start Date:</label>
-                    <input class="form-control" type="text" ng-model="employee.startDate"  placeholder="mm/dd/yyyy">
-                </fieldset>
-                <fieldset>
-                    <label>Office Phone:</label>
-                    <input class="form-control" type="text" ng-model="employee.officePhone"  placeholder="Office Phone">
-                </fieldset>
-                <fieldset>
-                    <label>Cell Phone:</label>
-                    <input class="form-control" type="text" ng-model="employee.cellPhone"  placeholder="Cell Phone">
-                </fieldset>
-                <fieldset>
-                    <label>Email:</label>
-                    <input class="form-control" type="email" ng-model="employee.email"  placeholder="Email">
-                </fieldset>
-                <fieldset>
-                    <label>Manager:</label>
-                    <select class="form-control" ng-model="employee.manager">
-                        <option>None</option>
-                        <option ng-repeat="item in employees">{{item.name}}</option>
-                    </select>
-                </fieldset>
-                <fieldset>
-                    <button class="btn btn-primary" ng-click="updateEmployee()">Update Employee</button>
-                </fieldset>
-            </form>
+        <ul class="nav navbar-nav">
+            <li><a href="#/">View Employee List</a></li>
+        </ul>
+    </div>
+</nav>
 
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Edit Employee</div>
+        <div class="panel-body">
+            <form name="newForm" class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Name:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control"name="fullname" ng-model="employee.name" placeholder="Enter Name" required>
+                        <i ng-show="newForm.fullName.$error.required">*required</i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Title:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="employeeTitle" ng-model="employee.title" placeholder="Enter Title" required>
+                        <i ng-show="newForm.employeeTitle.$error.required">*required</i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Gender:</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" ng-model="employee.sex">
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Start Date:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" ng-model="employee.startDate"  placeholder="mm/dd/yyyy">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Office Phone:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" ng-model="employee.officePhone"  placeholder="Enter Office Phone">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Cell Phone:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" ng-model="employee.cellPhone"  placeholder="Enter Cell Phone">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="email">Email:</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="email" ng-model="employee.email" placeholder="Enter email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Manager:</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" ng-model="employee.manager">
+                            <option ng-repeat="employee in employees">{{employee.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Upload Image:</label>
+                    <div class="col-sm-10">
+                        <button class="btn btn-warning" type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+                                accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+                            Select File</button>
+                        <br>
+
+                        <div ng-show="f.progress >= 0">File selected: {{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+                            <div class="progress-bar">
+                                <div class="uploaded" ng-style="{'width': f.progress+'%'}"></div>
+                            </div>
+                            <div class="percent">{{f.progress}}%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button class="btn btn-primary" ng-click="updateEmployee()">Save</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

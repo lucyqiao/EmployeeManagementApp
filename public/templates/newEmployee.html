@@ -1,59 +1,111 @@
-<div class="container">
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">New Employee</h3>
-        </div>
-        <div class="panel-body newForm">
-            <form name="newForm">
-                <fieldset calss="form-group">
-                    <label>First Name:</label>
-                    <input class="form-control" type="text" name="firstName" ng-model="fName"  placeholder="First Name" required>
-                    <i ng-show="newForm.firstName.$error.required">*required</i>
-                </fieldset>
-                <fieldset calss="form-group">
-                    <label>Last name:</label>
-                    <input class="form-control" type="text" name="lastName" ng-model="lName"  placeholder="Last Name" required>
-                    <i ng-show="newForm.lastName.$error.required">*required</i>
-                </fieldset>
-                <fieldset class="form-group">
-                    <label>Title:</label>
-                    <input class="form-control" type="text" name="employeeTitle" ng-model="title" placeholder="Title" required>
-                    <i ng-show="newForm.employeeTitle.$error.required">*required</i>
-                </fieldset>
-                <fieldset class="form-group">
-                    <label>Sex:</label>
-                    <select class="form-control" ng-model="sex">
-                        <option>male</option>
-                        <option>female</option>
-                    </select>
-                </fieldset>
-                <fieldset class="form-group">
-                    <label>Start Date:</label>
-                    <input class="form-control" type="text" ng-model="startDate"  placeholder="mm/dd/yyyy">
-                </fieldset>
-                <fieldset>
-                    <label>Office Phone:</label>
-                    <input class="form-control" type="text" ng-model="officePhone"  placeholder="Office Phone">
-                </fieldset>
-                <fieldset>
-                    <label>Cell Phone:</label>
-                    <input class="form-control" type="text" ng-model="cellPhone"  placeholder="Cell Phone">
-                </fieldset>
-                <fieldset>
-                    <label>Email:</label>
-                    <input class="form-control" type="email" ng-model="email"  placeholder="Email">
-                </fieldset>
-                <fieldset>
-                    <label>Manager:</label>
-                    <select class="form-control" ng-model="manager">
-                        <option>None</option>
-                        <option ng-repeat="employee in employees">{{employee.name}}</option>
-                    </select>
-                </fieldset>
-                <fieldset>
-                    <button class="btn btn-primary" ng-click="addEmployee()">Create New Employee</button>
-                </fieldset>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#/" class="navbar-brand">Employee Directory</a>
 
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#/">View Employee List</a><li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">New Employee</div>
+        <div class="panel-body">
+            <form name="newForm" class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="control-label col-sm-2">First Name:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control"  name="firstName" ng-model="fName" placeholder="Enter First Name" required>
+                        <i ng-show="newForm.firstName.$error.required"class="requireInput">*required</i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Last Name:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control"  name="lastName"ng-model="lName" placeholder="Enter Last Name" required>
+                        <i ng-show="newForm.lastName.$error.required" class="requireInput">*required</i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Title:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="employeeTitle" ng-model="title" placeholder="Enter Title" required>
+                        <i ng-show="newForm.employeeTitle.$error.required" class="requireInput">*required</i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Gender:</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" ng-model="sex">
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Start Date:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" ng-model="startDate"  placeholder="mm/dd/yyyy">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Office Phone:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" ng-model="officePhone"  placeholder="Enter Office Phone">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Cell Phone:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" ng-model="cellPhone"  placeholder="Enter Cell Phone">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="email">Email:</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="email" ng-model="email" placeholder="Enter email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Manager:</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" ng-model="manager">
+                            <option ng-repeat="employee in employees">{{employee.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Upload Image:</label>
+                    <div class="col-sm-10">
+                        <button class="btn btn-warning" type="file" ngf-select="uploadFiles($file, $invalidFiles)"
+                                accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+                            Select File</button>
+                        <br>
+
+                        <div ng-show="f.progress >= 0">File selected: {{f.name}} {{errFile.name}} {{errFile.$error}} {{errFile.$errorParam}}
+                            <div class="progress-bar">
+                                <div class="uploaded" ng-style="{'width': f.progress+'%'}"></div>
+                            </div>
+                            <div class="percent">{{f.progress}}%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button class="btn btn-primary" ng-click="addEmployee()">Create New Employee</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
