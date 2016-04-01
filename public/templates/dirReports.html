@@ -28,7 +28,7 @@
     <ul class="list-group list">
         <li ng-repeat="employee in employees | filter : searchText" class="list-group-item">
             <a href="#/{{employee._id}}">
-                <img src="images/user.png">
+                <img ng-src="/images/uploads/{{employee.name.replace(' ', '')}}.png" alt="">
             </a>
 
             <p><a href="#/{{employee._id}}">{{employee.name}}</a></p>
